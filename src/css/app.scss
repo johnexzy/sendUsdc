@@ -1,1 +1,64 @@
 // app global css in SCSS form
+
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background: radial-gradient(#eee, #fff);
+  padding: 20px 0;
+  margin-top: 64px;
+}
+.tableContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* background: #eee; */
+  margin-top: 20px;
+}
+.dataContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 600px;
+}
+.header {
+  text-align: center;
+  font-size: 31px;
+  font-weight: 600;
+}
+.bio {
+  text-align: center;
+  color: rgb(67, 66, 66);
+  margin-top: 16px;
+  font-size: 16px;
+}
+.sendBtn {
+  cursor: pointer;
+  margin-top: 16px;
+  /* padding: 8px; */
+  border: 1px solid gray;
+  /* border-radius: 5px; */
+  background: rgba(126, 117, 151, 0.253);
+  font-weight: bold;
+  text-align: center;
+}
+.connectBtn {
+  cursor: pointer;
+  margin-top: 16px;
+  padding: 8px;
+  border: 1px solid gray;
+  /* border-radius: 5px; */
+  background: rgba(126, 117, 151, 0.253);
+  font-weight: bold;
+  text-align: center;
+}
+.wave {
+  font-size: 25px;
+}
+.textarea {
+  background: rgba(221, 221, 221, 0.658);
+}
+.my-card {
+  width: 100%;
+  max-width: 250px;
+}

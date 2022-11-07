@@ -39,6 +39,7 @@
             <q-btn
               color="primary"
               rounded
+              @click="makeTransfer"
               icon="fas fa-paper-plane"
               class="sendBtn q-pa-md"
             />
@@ -55,7 +56,7 @@
 
 <script>
 import { defineComponent } from "vue";
-
+import USDCContract from "../scripts/usdcContract";
 export default defineComponent({
   name: "IndexPage",
   data() {
@@ -84,73 +85,23 @@ export default defineComponent({
         console.log(error);
       }
     },
+    async makeTransfer() {
+      if (!this.currentAccount) {
+        await this.connectWallet();
+      }
+      const usdcContract = new USDCContract(
+        window.ethereum,
+        "0x07865c6E87B9F70255377e024ace6630C1Eaa37F"
+      );
+      await usdcContract.transferWithAuthorization(
+        this.amount,
+        this.currentAccount,
+        this.recipient
+      );
+    },
     setCurrentAccount(account) {
       this.currentAccount = account;
     },
   },
 });
 </script>
-<style>
-.mainContainer {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  background: radial-gradient(#eee, #fff);
-  padding: 20px 0;
-  margin-top: 64px;
-}
-.tableContainer {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  /* background: #eee; */
-  margin-top: 20px;
-}
-.dataContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 600px;
-}
-.header {
-  text-align: center;
-  font-size: 31px;
-  font-weight: 600;
-}
-.bio {
-  text-align: center;
-  color: rgb(67, 66, 66);
-  margin-top: 16px;
-  font-size: 16px;
-}
-.sendBtn {
-  cursor: pointer;
-  margin-top: 16px;
-  /* padding: 8px; */
-  border: 1px solid gray;
-  /* border-radius: 5px; */
-  background: rgba(126, 117, 151, 0.253);
-  font-weight: bold;
-  text-align: center;
-}
-.connectBtn {
-  cursor: pointer;
-  margin-top: 16px;
-  padding: 8px;
-  border: 1px solid gray;
-  /* border-radius: 5px; */
-  background: rgba(126, 117, 151, 0.253);
-  font-weight: bold;
-  text-align: center;
-}
-.wave {
-  font-size: 25px;
-}
-.textarea {
-  background: rgba(221, 221, 221, 0.658);
-}
-.my-card {
-  width: 100%;
-  max-width: 250px;
-}
-</style>

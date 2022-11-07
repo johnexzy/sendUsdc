@@ -1,57 +1,72 @@
 <template>
-  <q-page padding class="flex flex-center">
-    <div class="mainContainer">
-      <div class="dataContainer">
-        <div class="header">👋 Hey there! welcome to SendUSDC</div>
+  <q-layout view="lHh Lpr lFf">
+    <q-header elevated>
+      <q-toolbar>
+        <q-toolbar-title> SendUSDC </q-toolbar-title>
 
-        <div class="bio q-mb-md">
-          This is an implementation of a gasless tranfer using EIP-3009
-          specifications. <br />
-          Note: This is a Goerli testnet implementation. Get Goerli USDC
-          <a
-            href="https://usdcfaucet.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            >here</a
-          >
-        </div>
-        <div v-if="currentAccount">
-          <div>
-            <label>Recipient's Address</label>
-            <q-input
-              v-model="recipient"
-              class="mdi-pap"
-              standout
-              placeholder="recipient's address"
-            ></q-input>
-          </div>
-          <div>
-            <label>Amount in USDC</label>
-            <q-input
-              v-model="amount"
-              class="mdi-pap"
-              type="number"
-              standout
-              placeholder="amount"
-            ></q-input>
-          </div>
-          <div class="row justify-center">
-            <q-btn
-              color="primary"
-              rounded
-              @click="makeTransfer"
-              icon="fas fa-paper-plane"
-              class="sendBtn q-pa-md"
-            />
-          </div>
-        </div>
+        <!-- <q-btn color="secondary" rounded>Connect Wallet</q-btn> -->
+      </q-toolbar>
+    </q-header>
 
-        <button v-else class="connectBtn" @click="connectWallet">
-          Connect Wallet to Say Hi
-        </button>
-      </div>
-    </div>
-  </q-page>
+    <q-page-container>
+      <q-page padding class="flex flex-center">
+        <div class="mainContainer">
+          <div class="dataContainer">
+            <div class="header">👋 Hey there! welcome to SendUSDC</div>
+
+            <div class="bio q-mb-md">
+              This is an implementation of a gasless tranfer using EIP-3009
+              specifications. <br />
+              <span class="text-red-10"
+                >"This is a Goerli testnet implementation and you'll need some
+                Goerli USDC to play around with. get some
+              </span>
+              <a
+                href="https://usdcfaucet.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >here</a
+              >"
+            </div>
+            <div v-if="currentAccount">
+              <div>
+                <label>Recipient's Address</label>
+                <q-input
+                  v-model="recipient"
+                  class="mdi-pap"
+                  standout
+                  placeholder="recipient's address"
+                ></q-input>
+              </div>
+              <div>
+                <label>Amount in USDC</label>
+                <q-input
+                  v-model="amount"
+                  class="mdi-pap"
+                  type="number"
+                  standout
+                  placeholder="amount"
+                ></q-input>
+              </div>
+              <div class="row justify-center">
+                <q-btn
+                  color="primary"
+                  rounded
+                  @click="makeTransfer"
+                  icon="fas fa-paper-plane"
+                  class="sendBtn q-pa-md"
+                />
+              </div>
+            </div>
+
+            <button v-else class="connectBtn" @click="connectWallet">
+              Connect Wallet to Say Hi
+            </button>
+          </div>
+        </div>
+      </q-page>
+    </q-page-container>
+  </q-layout>
 </template>
 
 <script>

@@ -13,6 +13,7 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.6.5",
+    "dotenv": "^16.0.3",
     "ethers": "^5.7.2",
     "pinia": "^2.0.11",
     "quasar": "^2.6.0",
